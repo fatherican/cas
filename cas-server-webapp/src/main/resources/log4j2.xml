@@ -57,14 +57,14 @@
         <Logger name="org.springframework.security" level="warn" />
 
         <Logger name="perfStatsLogger" level="info" additivity="false">
-            <AppenderRef ref="perfFileAppender"/>
+            <AppenderRef ref="console"/>
         </Logger>
 
         <Logger name="org.jasig.cas.web.flow" level="info" additivity="true">
-            <AppenderRef ref="file"/>
+            <AppenderRef ref="console"/>
         </Logger>
         <Logger name="org.jasig.inspektr.audit.support.Slf4jLoggingAuditTrailManager" level="info">
-            <AppenderRef ref="file"/>
+            <AppenderRef ref="console"/>
         </Logger>
         <Root level="error">
             <AppenderRef ref="console"/>
