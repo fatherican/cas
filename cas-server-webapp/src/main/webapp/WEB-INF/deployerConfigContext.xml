@@ -37,11 +37,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:sec="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
@@ -116,7 +118,7 @@
           class="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler"
           p:dataSource-ref="dataSource"
           p:passwordEncoder-ref="passwordEncoder"
-          p:sql="select password from users where username=?" />
+          p:sql="select password from user_info where user_name=?" />
     <bean id="passwordEncoder"
           class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder"
           c:encodingAlgorithm="MD5"
@@ -138,7 +140,6 @@
           p:acquireRetryDelay="${database.pool.acquireRetryDelay}"
           p:idleConnectionTestPeriod="${database.pool.idleConnectionTestPeriod}"
           p:preferredTestQuery="${database.pool.connectionHealthQuery}" />
-
 
 
 
