@@ -37,7 +37,10 @@
     </description>
 
     <util:properties id="casProperties" location="file:S:/springToolSuite/workspace/cas/casServer/cas.properties"/>
+    <!--将datasource配置信息放在项目外部，如果项目外部不存在数据库配置文件则使用项目内部的配置文件-->
+    <util:properties id="dataSourceProperties" location="${file:S:/springToolSuite/workspace/cas/casServer/datasource.properties:/WEB-INF/datasource.properties}"/>
 
     <context:property-placeholder properties-ref="casProperties"/>
+    <context:property-placeholder properties-ref="dataSourceProperties" ignore-resource-not-found="true" local-override="true" system-properties-mode="ENVIRONMENT"/>
 
 </beans>
