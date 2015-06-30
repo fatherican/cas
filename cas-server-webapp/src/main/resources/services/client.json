@@ -1,0 +1,9 @@
+{
+  "@class" : "org.jasig.cas.services.RegexRegisteredService",
+  "id" : 1,
+  "description" : "client1 service",
+  "serviceId" : "^http://.+",
+  "name" : "client1",
+  "theme" : "apereo",
+  "evaluationOrder" :1
+}
