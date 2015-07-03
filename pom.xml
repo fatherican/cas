@@ -340,7 +340,7 @@
                     </headerDefinitions>
                     <aggregate>true</aggregate>
                     <mapping>
-                        <schema>SCRIPT_STYLE</schema>]
+                        <schema>SCRIPT_STYLE</schema>
                         <ldif>SCRIPT_STYLE</ldif>
                         <yml>SCRIPT_STYLE</yml>
                         <conf>JAVADOC_STYLE</conf>
