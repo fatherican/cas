@@ -36,11 +36,11 @@
         can be moved between tiers without modification.
     </description>
 
-    <util:properties id="casProperties" location="WEB-INF/cas.properties,file:S:/springToolSuite/workspace/cas/casServer/cas.properties"/>
+    <util:properties id="casProperties" location="WEB-INF/cas.properties"/>
     <context:property-placeholder properties-ref="casProperties" ignore-unresolvable="true" system-properties-mode="OVERRIDE" local-override="true"/>
 
     <!--将datasource配置信息放在项目外部，如果项目外部不存在数据库配置文件则使用项目内部的配置文件,所以 配置顺序很重要-->
-    <util:properties id="dataSourceProperties" location="WEB-INF/datasource.properties,file:S:/springToolSuite/workspace/cas/casServer/datasource.properties"/>
+    <util:properties id="dataSourceProperties" location="WEB-INF/datasource.properties"/>
     <context:property-placeholder properties-ref="dataSourceProperties" ignore-unresolvable="true"/>
 
 
