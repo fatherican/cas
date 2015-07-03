@@ -34,5 +34,14 @@
                 </c:forEach>
             </cas:proxies>
         </c:if>
+        <!-- 在server验证成功后，这个页面负责生成与客户端交互的xml信息，在默认的casServiceValidationSuccess.jsp中，只包括用户名，并不提供其他的属性信息，因此需要对页面进行扩展 -->
+        <c:if test="${fn:length(chainedAuthentications[fn:length(chainedAuthentications)].principal.attributes) > 0}">
+            <cas:attributes>
+                <c:forEach var="attr"
+                           items="${chainedAuthentications[fn:length(assertion.chainedAuthentications)].principal.attributes}">
+                    <cas:${fn:escapeXml(attr.key)}>${fn:escapeXml(attr.value)}</cas:${fn:escapeXml(attr.key)}>
+                </c:forEach>
+            </cas:attributes>
+        </c:if>
     </cas:authenticationSuccess>
 </cas:serviceResponse>
