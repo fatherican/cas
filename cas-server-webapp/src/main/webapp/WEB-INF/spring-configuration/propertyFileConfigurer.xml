@@ -36,12 +36,43 @@
         can be moved between tiers without modification.
     </description>
 
-    <util:properties id="casProperties" location="WEB-INF/cas.properties,file:S:/springToolSuite/workspace/cas/casServer/cas.properties"/>
-    <context:property-placeholder properties-ref="casProperties" ignore-unresolvable="true" system-properties-mode="OVERRIDE" local-override="true"/>
+    <!--<util:properties id="casProperties" ignore-resource-not-found="true" local-override="true" location="classpath*:/WEB-INF/cas.properties,file:S:/springToolSuite/workspace/cas/casServer/cas.properties"/>-->
+    <!--<context:property-placeholder properties-ref="casProperties" ignore-unresolvable="true" system-properties-mode="OVERRIDE" local-override="true"/>-->
 
-    <!--将datasource配置信息放在项目外部，如果项目外部不存在数据库配置文件则使用项目内部的配置文件,所以 配置顺序很重要-->
-    <util:properties id="dataSourceProperties" location="WEB-INF/datasource.properties,file:S:/springToolSuite/workspace/cas/casServer/datasource.properties"/>
-    <context:property-placeholder properties-ref="dataSourceProperties" ignore-unresolvable="true"/>
+    <!--&lt;!&ndash;将datasource配置信息放在项目外部，如果项目外部不存在数据库配置文件则使用项目内部的配置文件,所以 配置顺序很重要&ndash;&gt;-->
+    <!--<util:properties id="dataSourceProperties" ignore-resource-not-found="true" local-override="true"   location="classpath*:/WEB-INF/datasource.properties,file:S:/springToolSuite/workspace/cas/casServer/datasource.properties"/>-->
+    <!--<context:property-placeholder properties-ref="dataSourceProperties" ignore-unresolvable="true" system-properties-mode="OVERRIDE" local-override="true"/>-->
+
+
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/cas.properties</value>
+                <!-- 生产环境 -->
+                <value>file:S:/springToolSuite/workspace/cas/casServer/cas.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/datasource.properties</value>
+                <!-- 生产环境 -->
+                <value>file:S:/springToolSuite/workspace/cas/casServer/datasource.properties</value>
+            </list>
+        </property>
+    </bean>
+
+
 
 
 </beans>

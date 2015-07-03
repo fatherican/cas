@@ -5,5 +5,8 @@
   "serviceId" : "^http://.+",
   "name" : "client1",
   "theme" : "apereo",
-  "evaluationOrder" :1
+  "attributeReleasePolicy" : {
+    "@class" : "org.jasig.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "userName", "userId", "workNumber" ] ]
+  }
 }
